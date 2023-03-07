@@ -1,0 +1,107 @@
+Q1..
+create table Student(
+RollNo varchar(255), 
+Name char(255),
+Gender char(255),
+Phone varchar(255)
+);
+-------
+Alter table Student
+Alter Column RollNo varchar Not Null ;
+---
+create table Attendance(
+RollNo varchar(255), 
+Date varchar(255),
+Status varchar(255),
+ClassVenue varchar(255)
+);
+---
+create table ClassVenue(
+ID varchar(255), 
+Building varchar(255),
+RoomNum varchar(255),
+Teacher varchar(255)
+);
+---
+Insert Into Student(RollNo, Name, Gender, Phone)
+Values('L164123', 'Ali Ahmad', 'Male', '0333-3333333');
+---
+create table Teacher(
+Name varchar(255), 
+Designation varchar(255),
+Department varchar(255),
+);
+---
+Insert Into Attendance(RollNo, Date, Status, ClassVenue)
+Values('L164125', '2-22-2016', 'P', '2');
+---
+Alter table Student
+Alter Column RollNo varchar(255) Not Null;
+
+--
+
+Q2...
+
+Alter table Attendance
+Add Primary key (RollNo);
+
+Alter table Student
+Add Primary key (RollNo);
+
+---
+
+Q3...
+Alter table Student
+Add Foreign key (RollNo) references Attendance(RollNo);
+
+---
+
+Q4..
+Alter table Student
+Drop COLUMN Phone;
+
+Alter table Student
+ADD WarningCount varchar(255);
+------
+
+Q5..
+i)Msg 547, Level 16, State 0, Line 1
+The INSERT statement conflicted with the FOREIGN KEY constraint 
+"FK__Student__RollNo__164452B1". The conflict occurred in database 
+"DB_lab(2)4A", table "dbo.Attendance", column 'RollNo'.
+
+ii)Insert Into ClassVenue(ID, Building, RoomNum, Teacher)
+Values('3', 'CS', '5', 'Ali');
+
+iii)Update Teacher
+set Name='Dr. Kashif zafar' where Name='Kashif zafar';
+
+iv)Delete Student
+where RollNo = 'L164123';
+
+v)Delete Student
+where RollNo = 'L164124';
+
+vi)Delete Attendance
+where RollNo = 'L164123' AND Status='A';
+
+------
+
+Q6..
+
+i)Alter table Teacher
+Add unique(Name);
+
+ii)Select * from Student
+where Gender = 'Male';
+
+Select * from Student
+where Gender = 'Female';
+
+iii)Select * from Attendance
+where Status = 'P';
+
+Select * from Attendance
+where Status = 'A';
+
+-------
